@@ -4,7 +4,7 @@
 
 
 $(document).ready(function () {
-    var currentHeaderDate = dayjs().format('dddd , MMMM YYYY');
+    var currentHeaderDate = dayjs().format('dddd, MMMM DD  ');
     $("#currentDay").text(currentHeaderDate);
     $(".saveBtn").on("click", function (event) {
         console.log(event.target)
@@ -17,13 +17,71 @@ $(document).ready(function () {
         console.log(note)
         localStorage.setItem(timeText, note)
     })
-    var timeBlocks = document.querySelectorAll(".time-block");
-    timeBlocks.forEach(function (timeBlocks) {
-        console.log(timeBlocks);
-        var hours
+
+    timeBlocks();
+
+    function timeBlocks() {
+        var hours = dayjs().hour();
+        $(".time-block").each(function () {
+            var $timeBlock = $(this);
+            $timeBlock.removeClass("past present future");
+            var hourBlock = parseInt($timeBlock.attr("id").split("-")[1]);
+            if (hourBlock < hours) {
+                $timeBlock.addClass("past");
+            } else if (hourBlock === hours) {
+                $timeBlock.addClass("present");
+            } else {
+                $timeBlock.addClass("future");
+            }
+            var timeText = $timeBlock.find(".hour").text();
+            var note = localStorage.getItem(timeText);
+            $timeBlock.find("textarea").val(note);
+        });
+    }
+});
+
+            // var hours = dayjs().format('H');
+            // var timeBlocks = document.querySelectorAll(".time-block");
+            // timeBlocks.forEach(function (timeBlocks) {
+            //     console.log(timeBlocks);
+            //     var hoursBlock = parseInt(timeBlocks.getAttribute("id").split("-")[1]);
+
+            //     $(this).removeClass("past present future");
+
+            // timeBlocks.classList.remove("past", "present", "future");
+
+    //         if (hoursBlock < hours) {
+    //             timeBlocks.classList.add("past");
+    //         } else if (hoursBlock === hours) {
+    //             timeBlocks.classList.add("present");
+    //         } else {
+    //             timeBlocks.classList.add("future");
+    //         }
+
+    //     });
+
+    // }
 
 
-    });
+// });
+
+    // var timeBlocks = document.querySelectorAll(".time-block");
+    // timeBlocks.forEach(function (timeBlocks) {
+    //     console.log(timeBlocks);
+    //     var hours = parseInt(timeBlocks.getAttribute("id").split("."), [1]);
+
+    //     // timeBlocks.classList.remove("past", "present", "future");
+
+    //     if (hours < currentHour) {
+    //         timeBlocks.addClass("past");
+    //     } else if (hours === currentHour) {
+    //         timeBlocks.addClass("presnt");
+    //     } else {
+    //         timeBlocks.addClass("future");
+    //     }
+
+
+    // });
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
@@ -43,5 +101,3 @@ $(document).ready(function () {
     //
 
     // TODO: Add code to display the current date in the header of the page.
-
-}); 
