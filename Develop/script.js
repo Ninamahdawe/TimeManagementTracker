@@ -16,6 +16,12 @@ $(document).ready(function () {
         var note = siblings[1].value
         console.log(note)
         localStorage.setItem(timeText, note)
+        $("#savelocal").removeClass("hide")
+        setTimeout(function () {
+
+            $("#savelocal").addClass("hide")
+
+        }, 5000)
     })
 
     timeBlocks();
