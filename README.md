@@ -28,7 +28,7 @@ Fifth a message will appear at the top of the page, confirming that your note ha
 
 All the users saved notes will be stored locally in their browser's localStorage, so they will be preserved even if the user refresh the page or close the browser.
 
-![Website screenshot](/images/tracker.html.png)
+![Website screenshot](/assets/tracker.html.png)
 
 ## Project Link :
 
