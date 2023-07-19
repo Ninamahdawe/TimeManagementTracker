@@ -32,7 +32,7 @@ All the users saved notes will be stored locally in their browser's localStorage
 
 ## Project Link :
 
-[link to deploy website](https://ninamahdawe.github.io/TimeManagementTracker/)
+[link to deploy website]
 
 ## source code
 
