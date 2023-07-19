@@ -36,4 +36,4 @@ All the users saved notes will be stored locally in their browser's localStorage
 
 ## source code
 
-source code in Develop.
+source code in CSS.
